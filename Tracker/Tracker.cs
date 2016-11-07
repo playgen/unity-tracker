@@ -156,7 +156,7 @@ public class Tracker : MonoBehaviour
 	public string GeneratePath ()
 	{
 		String path = Application.persistentDataPath;
-#if UNITY_ANDROID
+#if UNITY_ANDROID && !UNITY_EDITOR
 		AndroidJavaObject env = new AndroidJavaObject ("android.os.Environment");
 		AndroidJavaObject file = env.CallStatic<AndroidJavaObject> ("getExternalStorageDirectory");
 		path = file.Call<String> ("getAbsolutePath");
